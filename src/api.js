@@ -1,4 +1,4 @@
-const apiurl = "http://192.168.1.22:7001/dashboard";
+const apiurl = "http://localhost:7001/dashboard";
 
 const makeReqest = (token, url, body, method) =>
   fetch(`${apiurl}${url}`, {

@@ -17,7 +17,12 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use("/projects", express.static(path.join(__dirname, "./projects")));
+app.use("/", express.static(path.join(__dirname, "projects")));
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
 
 app.get("/dashboard/verifyToken", verifyToken, (req, res) => {
   res.send({
