@@ -1,4 +1,4 @@
-const apiurl = "http://localhost:7001/dashboard";
+const apiurl = "http://jantschulev.ddns.net/projects/dashboard";
 
 const makeReqest = (token, url, body, method) =>
   fetch(`${apiurl}${url}`, {

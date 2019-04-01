@@ -11,6 +11,11 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const zipper = require("adm-zip");
 const rimraf = require("rimraf");
+const mv = require("mv");
+
+const isDirectory = source => fs.lstatSync(source).isDirectory();
+const getDirectories = source =>
+  fs.readdirSync(source).map(name => path.join(source, name)).filter(isDirectory);
 
 app.use(cors());
 app.use(cookieParser());
@@ -99,6 +104,19 @@ app.post(
       const zip = new zipper(folderPath + "/data.zip");
       zip.extractAllTo(folderPath, true);
       fs.unlinkSync(folderPath + "/data.zip");
+      let directories = getDirectories(folderPath);
+      if(directories.indexOf(path.join(folderPath, "__MACOSX")) !== -1) {
+        rimraf.sync(path.join(folderPath, "__MACOSX"));
+      }
+      directories = getDirectories(folderPath);
+//      console.log(directories);
+//      console.log(fs.readdirSync(folderPath));
+      if(directories.length === 1) {
+        const folderName = directories[0].substring(directories[0].lastIndexOf("/") + 1);
+        const redirectUrl = `http://jantschulev.ddns.net/projects/${endpoint}/${folderName}/`;
+        fs.writeFileSync(path.join(folderPath, "index.html"), `<html><body><a href="${redirectUrl}">redirect</a><script>window.location.href="${redirectUrl}"</script></body></html>`);
+        console.log("Written Custom index.html for name ", folderName);
+      }
       res.send({
         status: "success"
       });

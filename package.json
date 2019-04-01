@@ -2,6 +2,7 @@
   "name": "project-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://jantschulev.ddns.net/projects",
   "dependencies": {
     "adm-zip": "^0.4.13",
     "body-parser": "^1.18.3",
@@ -13,6 +14,7 @@
     "grommet": "^2.5.5",
     "grommet-icons": "^4.2.0",
     "jsonwebtoken": "^8.5.0",
+    "mv": "^2.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",

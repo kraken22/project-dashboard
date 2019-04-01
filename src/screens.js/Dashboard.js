@@ -141,11 +141,12 @@ class Dashboard extends React.Component {
               <h3>{project.name}</h3>
               <Anchor
                 href={
-                  "http://jantschulev.ddns.net/projects/" + project.endpoint
+                  "/projects/" + project.endpoint + "/"
                 }
                 label={
-                  "http://jantschulev.ddns.net/projects/" + project.endpoint
+                  "http://jantschulev.ddns.net/projects/" + project.endpoint + "/"
                 }
+                target="_blank"
               />
             </Box>
             <Box direction="row" gap="small">
