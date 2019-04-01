@@ -98,7 +98,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <Box height="100vh">
+      <Box>
         <Box pad="small" justify="between" direction="row">
           <h2>Project Dashboard</h2>
 
@@ -140,11 +140,11 @@ class Dashboard extends React.Component {
             <Box>
               <h3>{project.name}</h3>
               <Anchor
-                href={
-                  "/projects/" + project.endpoint + "/"
-                }
+                href={"/projects/" + project.endpoint + "/"}
                 label={
-                  "http://jantschulev.ddns.net/projects/" + project.endpoint + "/"
+                  "http://jantschulev.ddns.net/projects/" +
+                  project.endpoint +
+                  "/"
                 }
                 target="_blank"
               />
